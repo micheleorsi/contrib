@@ -35,7 +35,7 @@ import (
 // we need to kill the controller process and return the reason.
 func (ngx *Manager) Start() {
 	glog.Info("Starting NGINX process...")
-	cmd := exec.Command("nginx")
+	cmd := exec.Command("nginx", "-c", ngx.ConfigFile+".shuffled")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Start(); err != nil {
